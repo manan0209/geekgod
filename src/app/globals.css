@@ -2,20 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Global Color Variables */
+:root {
+  --background-light: #f9fafb;
+  --foreground-light: #171717;
+  --background-dark: #0a0a0a;
+  --foreground-dark: #ededed;
+  --gradient-start: #6c63ff; /* Purple */
+  --gradient-middle: #ff6584; /* Pink */
+  --gradient-end: #63d1ff; /* Blue */
+  --card-bg: #1a1a2e; /* Card background */
+  --card-hover: #252542; /* Card hover effect */
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+}
+
+html.dark {
+  background-color: var(--background-dark);
+  color: var(--foreground-dark);
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Gradient Animation */
+.animate-gradient {
+  background-size: 400% 400%;
+  animation: gradientBG 8s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Card Styling */
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  background: var(--card-hover);
+  transform: translateY(-5px);
 }
