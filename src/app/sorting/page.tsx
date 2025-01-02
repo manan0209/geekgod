@@ -64,7 +64,7 @@ const SortingPage = () => {
     };
 
     // Run the animation with a timeout
-    const interval = setInterval(animate, 400);
+    const interval = setInterval(animate, 500);
     return interval;
   };
 
@@ -91,7 +91,7 @@ const SortingPage = () => {
       }
     };
 
-    const interval = setInterval(animate, 400);
+    const interval = setInterval(animate, 450);
     return interval;
   };
 
@@ -151,7 +151,7 @@ const SortingPage = () => {
       } else {
         clearInterval(interval);
       }
-    }, 200); // Adjust animation speed
+    }, 300); // Adjust animation speed
   };
   
   
