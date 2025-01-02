@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { dataset } from '@/utils/dataset'; // Ensure this function is defined to generate your dataset
+import Link from 'next/link';
+import { useState } from 'react';
 
 const SortingPage = () => {
   const [originalArray, setOriginalArray] = useState<number[]>(dataset);
@@ -15,6 +15,7 @@ const SortingPage = () => {
   const [currentInsertionIndex, setCurrentInsertionIndex] = useState<number | null>(null);
   const [currentMergeIndices, setCurrentMergeIndices] = useState<number[]>([]);
   const [currentQuickIndices, setCurrentQuickIndices] = useState<number[]>([]);
+  const [highlightedIndices, setHighlightedIndices] = useState<number[]>([]); // This will store indices to highlight
 
   const resetArrays = () => {
     const newArray = dataset;
@@ -96,9 +97,11 @@ const SortingPage = () => {
   };
 
   // Merge Sort Logic with animation
-  const mergeSortStep = () => {
+// Merge Sort Logic with animation and colors
+const mergeSortStep = () => {
     const array = [...mergeArray];
     const animations: number[][] = [];
+    let currentMergeIndices: number[] = [];
   
     const merge = (arr: number[], start: number, mid: number, end: number) => {
       const left = arr.slice(start, mid + 1);
@@ -106,9 +109,12 @@ const SortingPage = () => {
       let i = 0, j = 0, k = start;
   
       while (i < left.length && j < right.length) {
+        currentMergeIndices = [start + i, mid + 1 + j];  // Highlight both elements being compared
+        setHighlightedIndices(currentMergeIndices);  // Update the highlighted indices
+  
         if (left[i] <= right[j]) {
           arr[k] = left[i];
-          animations.push([...arr]); // Push current state of the array
+          animations.push([...arr]);
           i++;
         } else {
           arr[k] = right[j];
@@ -119,6 +125,8 @@ const SortingPage = () => {
       }
   
       while (i < left.length) {
+        currentMergeIndices = [start + i];  // Only highlight one element
+        setHighlightedIndices(currentMergeIndices);
         arr[k] = left[i];
         animations.push([...arr]);
         i++;
@@ -126,6 +134,8 @@ const SortingPage = () => {
       }
   
       while (j < right.length) {
+        currentMergeIndices = [mid + 1 + j];  // Only highlight one element
+        setHighlightedIndices(currentMergeIndices);
         arr[k] = right[j];
         animations.push([...arr]);
         j++;
@@ -154,13 +164,14 @@ const SortingPage = () => {
     }, 300); // Adjust animation speed
   };
   
-  
+
 
   // Quick Sort Logic with animation
-  const quickSortStep = () => {
+ // Quick Sort Logic with animation
+const quickSortStep = () => {
     const array = [...quickArray];
     const animations: number[][] = [];
-  
+    
     const partition = (arr: number[], low: number, high: number): number => {
       const pivot = arr[high];
       let i = low - 1;
@@ -198,6 +209,7 @@ const SortingPage = () => {
       }
     }, 200); // Adjust animation speed
   };
+  
 
 
   return (
@@ -237,7 +249,7 @@ const SortingPage = () => {
         <SortingCard
           title="Merge Sort"
           array={mergeArray}
-          currentIndex={null} // Merge-specific indices will be handled inside the page
+          currentIndex={highlightedIndices}// indices will be handled inside the page
           link="/sorting/merge-sort"
           bgColor="bg-gradient-to-r from-blue-400 to-cyan-500"
           timeComplexity="O(n log n)"
@@ -265,7 +277,7 @@ function SortingCard({
 }: {
   title: string;
   array: number[];
-  currentIndex: number | null;
+  currentIndex: number | number[] | null;
   link: string;
   bgColor: string;
   timeComplexity: string;
