@@ -51,6 +51,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </nav>
         {children}
+        <footer className="bg-gray-900 text-gray-400 py-4 mt-8 text-center">
+          <p className="text-sm">
+            © 2025 <span className="font-bold text-gray-200">GeekGod</span>. Built with 
+            <span className="text-red-500 mx-1">❤️</span>by 
+            <a href="https://github.com/manan0209" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline mx-1">
+              devmnn
+            </a> 
+            to visualize algorithms and make learning fun!
+          </p>
+        </footer>
       </body>
     </html>
   );

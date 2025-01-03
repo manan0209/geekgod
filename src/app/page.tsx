@@ -1,34 +1,34 @@
 // src/app/page.tsx
 
-import Link from 'next/link';
+import Link from "next/link";
 
 const categories = [
   {
-    title: 'Sorting Algorithms',
-    description: 'Visualize algorithms like Bubble Sort, Merge Sort, and Quick Sort.',
-    link: '/sorting',
-    bgColor: 'bg-gradient-to-r from-purple-500 to-indigo-500',
+    title: "Sorting Algorithms",
+    description:
+      "Visualize algorithms like Bubble Sort, Merge Sort, and Quick Sort.",
+    link: "/sorting",
+    bgColor: "bg-gradient-to-r from-purple-500 to-indigo-500",
   },
   {
-    title: 'Pathfinding Algorithms',
-    description: 'Learn algorithms like Dijkstra, A*, BFS, and DFS.',
-    link: '/pathfinding',
-    bgColor: 'bg-gradient-to-r from-green-400 to-teal-500',
+    title: "Pathfinding Algorithms",
+    description: "Learn algorithms like Dijkstra, A*, BFS, and DFS.",
+    link: "/pathfinding",
+    bgColor: "bg-gradient-to-r from-green-400 to-teal-500",
   },
   {
-    title: 'Greedy Algorithms',
-    description: 'Explore Prim’s, Kruskal’s, and other greedy strategies.',
-    link: '/greedy',
-    bgColor: 'bg-gradient-to-r from-pink-500 to-red-500',
+    title: "Greedy Algorithms",
+    description: "Explore Prim’s, Kruskal’s, and other greedy strategies.",
+    link: "/greedy",
+    bgColor: "bg-gradient-to-r from-pink-500 to-red-500",
   },
   {
-    title: 'About the Creator',
-    description: 'Learn about why and how GeekGod was built.',
-    link: '/about',
-    bgColor: 'bg-gradient-to-r from-blue-500 to-cyan-500',
+    title: "About the Creator",
+    description: "Learn about why and how GeekGod was built.",
+    link: "/about",
+    bgColor: "bg-gradient-to-r from-blue-500 to-cyan-500",
   },
 ];
-
 
 export default function HomePage() {
   return (
@@ -53,9 +53,6 @@ export default function HomePage() {
           </div>
         ))}
       </div>
-      <footer className="mt-16 text-center text-gray-500">
-        © 2025 GeekGod. Built with ❤️ to visualize algorithms.
-      </footer>
     </div>
   );
 }
