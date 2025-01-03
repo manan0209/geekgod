@@ -189,6 +189,7 @@ export default function BubbleSortPage() {
       </div>
 
       <div className="flex flex-col lg:flex-row justify-center gap-8 mb-6">
+        
         {/* C++ Code Implementation Section */}
         <div className="w-full lg:w-1/2 bg-gray-800 rounded-lg shadow-lg p-6 relative">
           <h2 className="text-2xl font-bold text-center mb-4 text-gray-200">
@@ -238,7 +239,7 @@ int main() {
     cout << arr[i] << " ";
   }
   
-  cout <<  endl << "Code brought to you by GeekGod, crafted by devmnn. Happy Learning! 🌟" << endl;
+  cout <<  endl << "Code brought to you by GeekGod, crafted with ❤️ by devmnn. Happy Learning! 🌟" << endl;
   
   return 0;
 }`}
@@ -282,7 +283,7 @@ int main() {
     cout << arr[i] << " ";
   }
   
-  cout <<  endl << "Code brought to you by GeekGod, crafted by devmnn. Happy Learning! 🌟" << endl;
+  cout <<  endl << "Code brought to you by GeekGod, crafted with ❤️ by devmnn. Happy Learning! 🌟" << endl;
   
   return 0;
 }`
@@ -295,19 +296,18 @@ int main() {
           </div>
         </div>
 
-        {/* Explanation Section */}
-        <div className="w-full lg:w-1/2 bg-gray-800 rounded-lg shadow-xl p-8">
-          <h2 className="text-3xl font-semibold text-center mb-6 text-gray-200">
+        <div className="w-full lg:w-1/2 bg-gray-800 rounded-lg shadow-2xl p-8">
+          <h2 className="text-3xl font-bold text-center mb-6 text-gray-200">
             Bubble Sort - Explained Simply
           </h2>
-          <p className="text-lg text-gray-300 mb-6">
+          <p className="text-lg leading-relaxed text-gray-300 mb-6">
             Imagine you have a bunch of marbles lined up in a row, and you want
             to sort them from smallest to biggest. Bubble Sort works like a
             playful game: it compares two marbles next to each other and swaps
             them if the bigger one comes first. This "bubbling up" continues
             until everything is perfectly sorted!
           </p>
-          <p className="text-lg text-gray-300 mb-6">
+          <p className="text-lg leading-relaxed text-gray-300 mb-6">
             For developers, Bubble Sort is a simple algorithm to understand but
             not the most efficient for large datasets. It’s great for learning
             how sorting works but is rarely used in real-world applications
