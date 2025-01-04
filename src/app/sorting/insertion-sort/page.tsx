@@ -1,8 +1,8 @@
 // src/app/sorting/insertion-sort/page.tsx
 "use client";
 
-import { useState, useEffect } from "react";
 import { dataset } from "@/utils/dataset";
+import { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -224,8 +224,8 @@ export default function InsertionSortPage() {
 // GeekGod by devmnn
 // Learn algorithms visually at GeekGod! 🚀
 
-#include <iostream>
-using namespace std;
+      #include <iostream>
+      using namespace std;
 
 // Insertion Sort implementation
 void insertionSort(int arr[], int n) {
@@ -272,8 +272,8 @@ int main() {
 // GeekGod by devmnn
 // Learn algorithms visually at GeekGod! 🚀
 
-#include <iostream>
-using namespace std;
+      #include <iostream>
+      using namespace std;
 
 // Insertion Sort implementation
 void insertionSort(int arr[], int n) {
