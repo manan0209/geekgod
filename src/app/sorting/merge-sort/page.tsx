@@ -133,10 +133,7 @@ export default function MergeSortPage() {
         setCopyStatus("Copied!");
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
       })
-      .catch((_err) => {
-        setCopyStatus("Failed to Copy");
-        setTimeout(() => setCopyStatus("Copy Code"), 1500);
-      });
+      ;
   };
 
   if (!isClient) return null;
@@ -490,8 +487,8 @@ int main() {
             </ul>
           </div>
           <p className="text-gray-400 italic mt-6 text-center">
-            "Brought to you by <span className="text-blue-500">GeekGod</span> –
-            simplifying algorithms, one step at a time!"
+          &quot;Brought to you by <span className="text-blue-500">GeekGod</span> _
+            simplifying algorithms, one step at a time!&quot;
           </p>
         </div>
       </div>

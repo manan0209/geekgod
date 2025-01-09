@@ -1,7 +1,7 @@
 "use client";
 import "./globals.css";
 import Navbar from "../components/Navbar"; // Import the Navbar component
-import { useState } from "react";
+//import { useState } from "react";
 
 export default function RootLayout({
   children,

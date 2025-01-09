@@ -81,10 +81,7 @@ export default function InsertionSortPage() {
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
       })
 
-      .catch((_err) => {
-        setCopyStatus("Failed to Copy");
-        setTimeout(() => setCopyStatus("Copy Code"), 1500);
-      })
+      
       ;
   };
 
@@ -334,7 +331,7 @@ int main() {
           </p>
           <p className="text-lg leading-relaxed text-gray-300 mb-6">
             Insertion Sort is a straightforward algorithm but can be inefficient
-            for large datasets due to its time complexity. However, it’s
+            for large datasets due to its time complexity. However, it&rsquo;s
             efficient for small or nearly sorted datasets, making it useful in
             practice for specific cases.
           </p>
@@ -378,8 +375,8 @@ int main() {
             </ul>
           </div>
           <p className="text-gray-400 italic mt-6 text-center">
-            "Brought to you by <span className="text-blue-500">GeekGod</span> –
-            turning algorithms into child's play!"
+          &quot;Brought to you by <span className="text-blue-500">GeekGod</span>
+            turning algorithms into child's play!&quot;
           </p>
         </div>
       </div>

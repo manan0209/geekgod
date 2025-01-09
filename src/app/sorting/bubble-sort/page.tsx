@@ -68,10 +68,7 @@ export default function BubbleSortPage() {
         setCopyStatus("Copied!");
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
       })
-      .catch((_err) => {
-        setCopyStatus("Failed to Copy");
-        setTimeout(() => setCopyStatus("Copy Code"), 1500);
-      });
+      ;
   };
 
   if (!isClient) {
@@ -309,7 +306,7 @@ int main() {
           </p>
           <p className="text-lg leading-relaxed text-gray-300 mb-6">
             For developers, Bubble Sort is a simple algorithm to understand but
-            not the most efficient for large datasets. It’s great for learning
+            not the most efficient for large datasets. It&rsquo;s great for learning
             how sorting works but is rarely used in real-world applications
             because of its slowness for large inputs.
           </p>
