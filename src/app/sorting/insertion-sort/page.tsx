@@ -24,7 +24,7 @@ export default function InsertionSortPage() {
   const insertionSort = async () => {
     setIsSorting(true);
     const arr = [...array];
-    let colorArray = new Array(arr.length).fill("default");
+    const colorArray = new Array(arr.length).fill("default");
     setColors([...colorArray]);
 
     for (let i = 1; i < arr.length; i++) {
@@ -80,10 +80,12 @@ export default function InsertionSortPage() {
         setCopyStatus("Copied!");
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
       })
-      .catch((err) => {
+
+      .catch((_err) => {
         setCopyStatus("Failed to Copy");
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
-      });
+      })
+      ;
   };
 
   if (!isClient) return null;

@@ -13,8 +13,8 @@ const SortingPage = () => {
 
   const [currentBubbleIndex, setCurrentBubbleIndex] = useState<number | null>(null);
   const [currentInsertionIndex, setCurrentInsertionIndex] = useState<number | null>(null);
-  const [currentMergeIndices, setCurrentMergeIndices] = useState<number[]>([]);
-  const [currentQuickIndices, setCurrentQuickIndices] = useState<number[]>([]);
+  const setCurrentMergeIndices = useState<number[]>([])[1];
+  const setCurrentQuickIndices = useState<number[]>([])[1];
   const [highlightedIndices, setHighlightedIndices] = useState<number[]>([]); // This will store indices to highlight
 
   const resetArrays = () => {

@@ -44,7 +44,7 @@ export default function QuickSortPage() {
     startIdx: number,
     endIdx: number
   ): Promise<number> => {
-    let pivot = arr[endIdx];
+    const pivot = arr[endIdx];
     let i = startIdx - 1;
 
     for (let j = startIdx; j < endIdx; j++) {
@@ -119,7 +119,7 @@ export default function QuickSortPage() {
         setCopyStatus("Copied!");
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
       })
-      .catch((err) => {
+      .catch((_err) => {
         setCopyStatus("Failed to Copy");
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
       });

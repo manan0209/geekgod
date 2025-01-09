@@ -133,7 +133,7 @@ export default function MergeSortPage() {
         setCopyStatus("Copied!");
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
       })
-      .catch((err) => {
+      .catch((_err) => {
         setCopyStatus("Failed to Copy");
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
       });
