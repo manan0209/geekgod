@@ -326,7 +326,7 @@ int main() {
             Imagine you are sorting a deck of cards in your hands, and you pick
             one card at a time, placing it in the correct position among the
             cards you have already sorted. This is how Insertion Sort works: it
-            picks an element, compares it to the ones before it, and "inserts"
+            picks an element, compares it to the ones before it, and &quot;inserts&quot;
             it in the right place.
           </p>
           <p className="text-lg leading-relaxed text-gray-300 mb-6">
@@ -376,7 +376,7 @@ int main() {
           </div>
           <p className="text-gray-400 italic mt-6 text-center">
           &quot;Brought to you by <span className="text-blue-500">GeekGod</span>
-            turning algorithms into child's play!&quot;
+            turning algorithms into child&apos;s play!&quot;
           </p>
         </div>
       </div>

@@ -468,8 +468,8 @@ int main() {
           </div>
 
           <p className="text-gray-400 italic mt-6 text-center">
-            "Brought to you by <span className="text-blue-500">GeekGod</span> –
-            turning algorithms into child's play!"
+          &quot;Brought to you by <span className="text-blue-500">GeekGod</span> –
+            turning algorithms into child&apos;s play!&quot;
           </p>
         </div>
       </div>

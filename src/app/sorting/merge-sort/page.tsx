@@ -487,7 +487,7 @@ int main() {
             </ul>
           </div>
           <p className="text-gray-400 italic mt-6 text-center">
-          &quot;Brought to you by <span className="text-blue-500">GeekGod</span> _
+          &quot;Brought to you by <span className="text-blue-500">GeekGod</span> —
             simplifying algorithms, one step at a time!&quot;
           </p>
         </div>

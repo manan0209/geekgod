@@ -301,7 +301,7 @@ int main() {
             Imagine you have a bunch of marbles lined up in a row, and you want
             to sort them from smallest to biggest. Bubble Sort works like a
             playful game: it compares two marbles next to each other and swaps
-            them if the bigger one comes first. This "bubbling up" continues
+            them if the bigger one comes first. This &quot;bubbling up&quot; continues
             until everything is perfectly sorted!
           </p>
           <p className="text-lg leading-relaxed text-gray-300 mb-6">
@@ -342,8 +342,8 @@ int main() {
             </ul>
           </div>
           <p className="text-gray-400 italic mt-6 text-center">
-            "Brought to you by <span className="text-blue-500">GeekGod</span> –
-            turning algorithms into child's play!"
+          &quot;Brought to you by <span className="text-blue-500">GeekGod</span> –
+            turning algorithms into child's play!&quot;
           </p>
         </div>
       </div>
