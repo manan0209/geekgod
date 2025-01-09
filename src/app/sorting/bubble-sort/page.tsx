@@ -68,10 +68,7 @@ export default function BubbleSortPage() {
         setCopyStatus("Copied!");
         setTimeout(() => setCopyStatus("Copy Code"), 1500);
       })
-      .catch((err) => {
-        setCopyStatus("Failed to Copy");
-        setTimeout(() => setCopyStatus("Copy Code"), 1500);
-      });
+      .catch((err) => console.error(err));
   };
 
   if (!isClient) {

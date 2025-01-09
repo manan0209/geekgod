@@ -8,10 +8,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [darkMode, setDarkMode] = useState(false);
+  //const [darkMode] = useState(false);
 
   return (
-    <html lang="en" className={darkMode ? "dark" : ""}>
+    <html lang="en">
       <body className="bg-gray-900 text-gray-100 flex flex-col min-h-screen">
         {/* Navbar */}
         <Navbar />
