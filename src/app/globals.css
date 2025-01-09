@@ -29,6 +29,7 @@ body {
 html {
   background-color: var(--background-light);
   color: var(--foreground-light);
+  font-family: 'Poppins', sans-serif;
 }
 
 html.dark {

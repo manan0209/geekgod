@@ -21,7 +21,7 @@ export default function AboutPage() {
           <p className="text-lg text-gray-300 mb-6">
             Feel free to reach out or explore my other projects:
             <a
-              href="https://github.com/your-github"
+              href="https://github.com/manan0209"
               className="text-blue-400 hover:underline ml-2"
               target="_blank"
               rel="noopener noreferrer"

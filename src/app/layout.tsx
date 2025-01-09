@@ -1,65 +1,64 @@
-// src/app/layout.tsx
 "use client";
-import './globals.css';
-import Link from 'next/link';
-import { useState } from 'react';
+import "./globals.css";
+import Navbar from "../components/Navbar"; // Import the Navbar component
+import { useState } from "react";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <html lang="en" className={darkMode ? 'dark' : ''}>
-      <body className="bg-gray-900 text-gray-100">
-        <nav className="sticky top-0 z-10 bg-gray-800 text-white shadow-md py-4">
-          <div className="container mx-auto flex justify-between items-center px-6">
-            <Link href="/" className="text-2xl font-bold tracking-wide bg-gradient-to-r from-purple-500 to-indigo-500 bg-clip-text text-transparent">
-              GeekGod
-            </Link>
-            <div className="flex items-center space-x-6">
-              <Link
-                href="/sorting"
-                className="hover:text-purple-400 transition-colors"
+    <html lang="en" className={darkMode ? "dark" : ""}>
+      <body className="bg-gray-900 text-gray-100 flex flex-col min-h-screen">
+        {/* Navbar */}
+        <Navbar />
+
+        {/* Main Content */}
+        <main className="flex-grow container mx-auto px-4 py-8">
+          {children}
+        </main>
+
+        {/* Redesigned Footer */}
+        <footer className="relative bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-gray-200 rounded-t-[3rem] shadow-xl">
+          <div className="container mx-auto px-6 py-10">
+            {/* Curved Header Section */}
+            <div className="flex justify-center mb-8">
+              <svg
+                className="w-10 h-10 text-gray-200 animate-bounce"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
               >
-                Sorting
-              </Link>
-              <Link
-                href="/pathfinding"
-                className="hover:text-green-400 transition-colors"
-              >
-                Pathfinding
-              </Link>
-              <Link
-                href="/greedy"
-                className="hover:text-pink-400 transition-colors"
-              >
-                Greedy
-              </Link>
-              <Link
-                href="/about"
-                className="hover:text-blue-400 transition-colors"
-              >
-                About
-              </Link>
-              <button
-                className="p-2 rounded-full bg-gray-700 hover:bg-gray-600"
-                onClick={() => setDarkMode(!darkMode)}
-                title="Toggle Dark Mode"
-              >
-                {darkMode ? '☀️' : '🌙'}
-              </button>
+                <path d="M12 3l4 8h-8l4-8zm1 2h-2v3h2v-3zm-1 16c5 0 9-4 9-9h2c0 6.07-4.93 11-11 11s-11-4.93-11-11h2c0 5 4 9 9 9zm2-10h-2v6h-2v-6h-2v-2h6v2z" />
+              </svg>
+              <h2 className="text-3xl font-extrabold text-center text-gray-100 ml-3">
+                GeekGod
+              </h2>
             </div>
+
+            
+
+            {/* Description Section */}
+            <p className="mt-6 text-center text-base text-black-100">
+              © 2025 <span className="font-semibold">GeekGod</span>. Built with{" "}
+              <span className="text-red-400">❤️</span> by{" "}
+              <a
+                href="https://github.com/manan0209"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gray-300 transition"
+              >
+                devmnn
+              </a>{" "}
+              to visualize algorithms and make learning fun!
+            </p>
           </div>
-        </nav>
-        {children}
-        <footer className="bg-gray-900 text-gray-400 py-4 mt-8 text-center">
-          <p className="text-sm">
-            © 2025 <span className="font-bold text-gray-200">GeekGod</span>. Built with 
-            <span className="text-red-500 mx-1">❤️</span>by 
-            <a href="https://github.com/manan0209" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline mx-1">
-              devmnn
-            </a> 
-            to visualize algorithms and make learning fun!
-          </p>
+
+          {/* Decorative Bottom Curve */}
+          
         </footer>
       </body>
     </html>
