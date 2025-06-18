@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GeekGod - Algorithm Visualization Tool
 
-## Getting Started
+GeekGod is an interactive web application designed to help users visualize and understand various computer science algorithms through animations and step-by-step execution. The project is built with Next.js and features a modern, responsive UI.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Sorting Algorithms**
+  - Bubble Sort
+  - Insertion Sort
+  - Merge Sort
+  - Quick Sort
+  
+- **Pathfinding Algorithms** (Coming Soon!)
+  - Dijkstra's Algorithm
+  - A* Search
+  - BFS
+  - DFS
+
+- **Greedy Algorithms** (Coming Soon!)
+
+- **Interactive Visualizations**
+  - Step-by-step execution
+  - Speed control
+  - Color-coded elements for better understanding
+  - Pseudocode highlighting
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: Next.js 13+ (App Router)
+- **Styling**: Tailwind CSS
+- **Visualization**: Custom-built with React
+- **Type Safety**: TypeScript
+- **Icons**: React Icons
+- **Code Highlighting**: react-syntax-highlighter
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 16.8 or later
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/manan0209/geekgod.git
+   cd geekgod
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+## 🎯 Usage
+
+1. Navigate to the algorithm you want to visualize from the home page
+2. Click "Start Sorting" to begin the visualization
+3. Use the speed control to adjust the animation speed
+4. Click "Reset" to start over with a new random dataset
+5. Follow along with the highlighted pseudocode to understand the algorithm's steps
+
+## 🛠 Project Structure
+
+```
+src/
+├── app/                    # App router pages
+│   ├── sorting/            # Sorting algorithms
+│   ├── pathfinding/        # Pathfinding algorithms (coming soon)
+│   ├── greedy/             # Greedy algorithms (coming soon)
+│   ├── about/              # About page
+│   └── layout.tsx          # Root layout
+├── components/             # Reusable components
+└── utils/                  # Utility functions and data
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🤝 Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Learn More
+## 📝 License
 
-To learn more about Next.js, take a look at the following resources:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🙏 Acknowledgments
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Inspired by various algorithm visualization tools
+- Built with ❤️ using Next.js and Tailwind CSS
