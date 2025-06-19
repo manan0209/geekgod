@@ -13,6 +13,25 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <title>GeekGod - Interactive Algorithm Visualizer</title>
+        <meta name="description" content="Visualize sorting, pathfinding, and greedy algorithms interactively. Learn computer science with beautiful, step-by-step visualizations. GeekGod is a modern, open-source algorithm visualizer built with Next.js and Tailwind CSS." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#18181b" />
+        <meta property="og:title" content="GeekGod - Interactive Algorithm Visualizer" />
+        <meta property="og:description" content="Visualize sorting, pathfinding, and greedy algorithms interactively. Learn computer science with beautiful, step-by-step visualizations." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://geekgod.vercel.app/" />
+        <meta property="og:image" content="/geekgodlogo.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="GeekGod - Interactive Algorithm Visualizer" />
+        <meta name="twitter:description" content="Visualize sorting, pathfinding, and greedy algorithms interactively. Learn computer science with beautiful, step-by-step visualizations." />
+        <meta name="twitter:image" content="/geekgodlogo.jpg" />
+        <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link rel="canonical" href="https://geekgod.vercel.app/" />
+      </head>
       <body className="bg-gray-900 text-gray-100 flex flex-col min-h-screen">
         {/* Navbar */}
         <Navbar />

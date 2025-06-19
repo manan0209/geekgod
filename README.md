@@ -1,6 +1,8 @@
-# GeekGod - Algorithm Visualization Tool
+# GeekGod - Interactive Algorithm Visualizer
 
-GeekGod is an interactive web application designed to help users visualize and understand various computer science algorithms through animations and step-by-step execution. The project is built with Next.js and features a modern, responsive UI.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-geekgod.vercel.app-purple?style=for-the-badge&logo=vercel)](https://geekgod.vercel.app/)
+
+GeekGod is an interactive web application designed to help users visualize and understand various computer science algorithms through animations and step-by-step execution. The project is built with Next.js and features a modern, responsive UI, beautiful drag-and-drop interactions, and robust SEO/PWA support.
 
 ## 🚀 Features
 
@@ -10,19 +12,30 @@ GeekGod is an interactive web application designed to help users visualize and u
   - Merge Sort
   - Quick Sort
   
-- **Pathfinding Algorithms** (Coming Soon!)
+- **Pathfinding Algorithms**
   - Dijkstra's Algorithm
   - A* Search
   - BFS
   - DFS
 
-- **Greedy Algorithms** (Coming Soon!)
+- **Greedy Algorithms**
+  - Activity Selection
+  - Huffman Coding
+  - Kruskal's MST
+  - Prim's MST
 
 - **Interactive Visualizations**
   - Step-by-step execution
   - Speed control
+  - Drag-to-draw and drag-to-move for pathfinding
   - Color-coded elements for better understanding
   - Pseudocode highlighting
+  - Modern, minimal UI
+
+- **SEO & PWA**
+  - Custom favicon and manifest for all devices
+  - SEO meta tags (Open Graph, Twitter, canonical)
+  - Mobile-friendly and installable as a PWA
 
 ## 🛠️ Tech Stack
 
@@ -58,49 +71,28 @@ GeekGod is an interactive web application designed to help users visualize and u
 3. Start the development server:
    ```bash
    npm run dev
-   # or
-   yarn dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 🎯 Usage
+## 🌐 Production & SEO
 
-1. Navigate to the algorithm you want to visualize from the home page
-2. Click "Start Sorting" to begin the visualization
-3. Use the speed control to adjust the animation speed
-4. Click "Reset" to start over with a new random dataset
-5. Follow along with the highlighted pseudocode to understand the algorithm's steps
+- All pages include SEO meta tags and a custom favicon for a polished, professional look.
+- The app is installable as a PWA and works great on mobile.
+- Favicon assets are in `public/favicon/` and referenced in the app layout.
 
-## 🛠 Project Structure
+## 📁 Project Structure
 
-```
-src/
-├── app/                    # App router pages
-│   ├── sorting/            # Sorting algorithms
-│   ├── pathfinding/        # Pathfinding algorithms (coming soon)
-│   ├── greedy/             # Greedy algorithms (coming soon)
-│   ├── about/              # About page
-│   └── layout.tsx          # Root layout
-├── components/             # Reusable components
-└── utils/                  # Utility functions and data
-```
+- `src/app/` - Next.js app directory (pages, layouts, etc.)
+- `src/components/` - Reusable React components
+- `public/favicon/` - Favicon and manifest assets
+- `src/types/` - TypeScript types
+- `src/utils/` - Utility functions
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## 📄 License
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Inspired by various algorithm visualization tools
-- Built with ❤️ using Next.js and Tailwind CSS
+[MIT](LICENSE)
