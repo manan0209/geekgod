@@ -215,6 +215,10 @@ export default function DijkstraPage() {
                 visitedNodes={visitedNodes}
                 path={path}
                 isVisualizing={isVisualizing}
+                isMouseDown={isMouseDown}
+                isMovingStart={isMovingStart}
+                isMovingEnd={isMovingEnd}
+                onMouseDownChange={setIsMouseDown}
               />
               <div className="mt-4 pt-4 border-t border-gray-700">
                 <div className="flex flex-wrap gap-3">

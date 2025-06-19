@@ -1,13 +1,17 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { Node, NodeType, GridDimensions } from '@/types/pathfinding';
+import { Node, NodeType } from '@/types/pathfinding';
+import { useEffect, useState } from 'react';
 
 interface GridProps {
   rows: number;
   cols: number;
   onNodeClick: (node: Node) => void;
   onNodeDrag: (node: Node) => void;
+  onMouseDownChange?: (down: boolean) => void;
+  isMouseDown?: boolean;
+  isMovingStart?: boolean;
+  isMovingEnd?: boolean;
   startNode: { row: number; col: number };
   endNode: { row: number; col: number };
   walls: { row: number; col: number }[];
@@ -21,6 +25,10 @@ const Grid = ({
   cols,
   onNodeClick,
   onNodeDrag,
+  onMouseDownChange,
+  isMouseDown = false,
+  isMovingStart = false,
+  isMovingEnd = false,
   startNode,
   endNode,
   walls,
@@ -28,7 +36,6 @@ const Grid = ({
   path,
   isVisualizing,
 }: GridProps) => {
-  const [isMouseDown, setIsMouseDown] = useState(false);
   const [grid, setGrid] = useState<Node[][]>([]);
 
   // Initialize grid
@@ -85,7 +92,7 @@ const Grid = ({
   };
 
   const handleMouseDown = (row: number, col: number) => {
-    setIsMouseDown(true);
+    onMouseDownChange && onMouseDownChange(true);
     onNodeClick(grid[row][col]);
   };
 
@@ -96,16 +103,8 @@ const Grid = ({
   };
 
   const handleMouseUp = () => {
-    setIsMouseDown(false);
+    onMouseDownChange && onMouseDownChange(false);
   };
-
-  // Add event listeners to handle mouse up outside the grid
-  useEffect(() => {
-    window.addEventListener('mouseup', handleMouseUp);
-    return () => {
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, []);
 
   return (
     <div 

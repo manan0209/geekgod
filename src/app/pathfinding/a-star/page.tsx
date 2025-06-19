@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
 import Grid from "@/components/Pathfinding/Grid";
+import { useCallback, useEffect, useState } from "react";
 
 // Node type for TypeScript
 type NodeType = "start" | "end" | "wall" | "visited" | "path" | "unvisited";
@@ -559,6 +559,10 @@ export default function AstarPage() {
                 visitedNodes={visitedNodes}
                 path={path}
                 isVisualizing={isVisualizing}
+                isMouseDown={isMouseDown}
+                isMovingStart={isMovingStart}
+                isMovingEnd={isMovingEnd}
+                onMouseDownChange={setIsMouseDown}
               />
 
               {/* Controls */}
