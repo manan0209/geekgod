@@ -1,6 +1,7 @@
 "use client";
-import "./globals.css";
+import Image from "next/image";
 import Navbar from "../components/Navbar"; // Import the Navbar component
+import "./globals.css";
 //import { useState } from "react";
 
 export default function RootLayout({
@@ -22,43 +23,43 @@ export default function RootLayout({
         </main>
 
         {/* Redesigned Footer */}
-        <footer className="relative bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-gray-200 rounded-t-[3rem] shadow-xl">
-          <div className="container mx-auto px-6 py-10">
-            {/* Curved Header Section */}
-            <div className="flex justify-center mb-8">
-              <svg
-                className="w-10 h-10 text-gray-200 animate-bounce"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M12 3l4 8h-8l4-8zm1 2h-2v3h2v-3zm-1 16c5 0 9-4 9-9h2c0 6.07-4.93 11-11 11s-11-4.93-11-11h2c0 5 4 9 9 9zm2-10h-2v6h-2v-6h-2v-2h6v2z" />
-              </svg>
-              <h2 className="text-3xl font-extrabold text-center text-gray-100 ml-3">
+        <footer className="backdrop-blur-md bg-gray-900/80 border-t border-gray-800 text-gray-400 mt-12">
+          <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <Image
+                src="/geekgodlogo.jpg"
+                alt="GeekGod Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8 rounded-full border-2 border-purple-400"
+                priority
+              />
+              <span className="text-lg font-bold bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text select-none">
                 GeekGod
-              </h2>
+              </span>
             </div>
-
-            
-
-            {/* Description Section */}
-            <p className="mt-6 text-center text-base text-black-100">
-              © 2025 <span className="font-semibold">GeekGod</span>. Built with{" "}
-              <span className="text-red-400">❤️</span> by{" "}
+            <div className="text-sm text-gray-400 text-center md:text-right">
+              © {new Date().getFullYear()} Manan Goel. Made with{" "}
+              <span className="text-pink-400">♥</span> to make algorithms easy
+              for everyone.
+            </div>
+            <div className="flex gap-3">
               <a
                 href="https://github.com/manan0209"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-gray-300 transition"
+                className="hover:text-blue-400 transition"
               >
-                devmnn
-              </a>{" "}
-              to visualize algorithms and make learning fun!
-            </p>
+                GitHub
+              </a>
+              <a
+                href="mailto:manangoel0209@gmail.com"
+                className="hover:text-green-400 transition"
+              >
+                Contact
+              </a>
+            </div>
           </div>
-
-          {/* Decorative Bottom Curve */}
-          
         </footer>
       </body>
     </html>

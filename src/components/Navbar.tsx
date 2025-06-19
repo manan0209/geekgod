@@ -1,63 +1,71 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
+const navItems = [
+  { name: "Sorting", href: "/sorting" },
+  { name: "Pathfinding", href: "/pathfinding" },
+  { name: "Greedy", href: "/greedy" },
+  { name: "About", href: "/about" },
+];
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen((v) => !v);
 
   return (
-    <nav className="bg-gray-900 shadow-lg rounded-b-3xl sticky top-0 z-50">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav className="backdrop-blur-md bg-gray-900/80 border-b border-gray-800 sticky top-0 z-50 shadow-md">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
-        <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r via-pink-500 to-blue-500 rounded-full transition-all duration-300 ease-in-out bg-transparent hover:bg-gradient-to-r from-purple-400 to-gold-500 hover:text-white hover:scale-105 shadow-md">
-          <Link href="/">
-            Geek
-            <span className="text-gold-100 text-3xl font-extrabold rounded-full transition-all duration-300 ease-in-out bg-transparent hover:bg-gradient-to-r from-purple-400 to-gold-500 hover:text-white hover:scale-115 shadow-md">
-              God
-            </span>
-          </Link>
-        </h2>
+        <Link href="/" className="flex items-center gap-2 group">
+          <Image
+            src="/geekgodlogo.jpg"
+            alt="GeekGod Logo"
+            width={40}
+            height={40}
+            className="w-10 h-10 rounded-full shadow border-2 border-purple-400 bg-white/10"
+            priority
+          />
+          <span className="text-2xl font-extrabold bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text tracking-tight select-none">
+            GeekGod
+          </span>
+        </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6 items-center">
-          {["Sorting", "Pathfinding", "Greedy", "About"].map((item) => (
+        <div className="hidden md:flex gap-2 items-center">
+          {navItems.map((item) => (
             <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
-              className="text-gray-100 text-lg font-semibold rounded-full px-4 py-2 transition-all duration-300 ease-in-out bg-transparent hover:bg-gradient-to-r from-purple-400 to-blue-500 hover:text-white hover:scale-105 shadow-md"
+              key={item.name}
+              href={item.href}
+              className="px-4 py-2 rounded-lg text-gray-100 font-medium hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500 hover:text-white transition-all duration-200"
             >
-              {item}
+              {item.name}
             </Link>
           ))}
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
-          <button
-            onClick={toggleMobileMenu}
-            className="text-gray-100 text-3xl focus:outline-none"
-            aria-label="Toggle Menu"
-          >
-            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-        </div>
+        <button
+          onClick={toggleMobileMenu}
+          className="md:hidden text-gray-100 text-2xl focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-gray-800 text-center rounded-b-3xl shadow-lg">
-          {["Sorting", "Pathfinding", "Greedy", "About"].map((item) => (
+        <div className="md:hidden bg-gray-900/95 border-t border-gray-800 px-4 pb-4 pt-2 rounded-b-2xl shadow-lg animate-fade-in">
+          {navItems.map((item) => (
             <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
+              key={item.name}
+              href={item.href}
               onClick={toggleMobileMenu}
-              className="block text-gray-100 text-lg font-semibold rounded-full px-4 py-3 m-2 transition-all duration-300 ease-in-out bg-transparent hover:bg-gradient-to-r from-purple-400 to-blue-500 hover:text-white hover:scale-105 shadow-md"
+              className="block w-full text-left px-4 py-3 rounded-lg text-gray-100 font-medium hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500 hover:text-white transition-all duration-200 mb-1"
             >
-              {item}
+              {item.name}
             </Link>
           ))}
         </div>

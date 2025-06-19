@@ -8,16 +8,13 @@ interface GridProps {
   cols: number;
   onNodeClick: (node: Node) => void;
   onNodeDrag: (node: Node) => void;
-  onMouseDownChange?: (down: boolean) => void;
-  isMouseDown?: boolean;
-  isMovingStart?: boolean;
-  isMovingEnd?: boolean;
   startNode: { row: number; col: number };
   endNode: { row: number; col: number };
   walls: { row: number; col: number }[];
   visitedNodes: { row: number; col: number }[];
   path: { row: number; col: number }[];
-  isVisualizing: boolean;
+  isMouseDown: boolean;
+  onMouseDownChange: (down: boolean) => void;
 }
 
 const Grid = ({
@@ -25,16 +22,13 @@ const Grid = ({
   cols,
   onNodeClick,
   onNodeDrag,
-  onMouseDownChange,
-  isMouseDown = false,
-  isMovingStart = false,
-  isMovingEnd = false,
   startNode,
   endNode,
   walls,
   visitedNodes,
   path,
-  isVisualizing,
+  isMouseDown,
+  onMouseDownChange,
 }: GridProps) => {
   const [grid, setGrid] = useState<Node[][]>([]);
 
@@ -92,7 +86,7 @@ const Grid = ({
   };
 
   const handleMouseDown = (row: number, col: number) => {
-    onMouseDownChange && onMouseDownChange(true);
+    onMouseDownChange(true);
     onNodeClick(grid[row][col]);
   };
 
@@ -103,19 +97,25 @@ const Grid = ({
   };
 
   const handleMouseUp = () => {
-    onMouseDownChange && onMouseDownChange(false);
+    onMouseDownChange(false);
+  };
+
+  const handleMouseLeave = () => {
+    onMouseDownChange(false);
   };
 
   return (
-    <div 
+    <div
       className="grid gap-px bg-gray-200 p-2 rounded-lg overflow-auto"
       style={{
         gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
         gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
       }}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
     >
-      {grid.map((row, rowIdx) =>
-        row.map((node, colIdx) => {
+      {grid.map(row =>
+        row.map(node => {
           const nodeType = getNodeType(node.row, node.col);
           return (
             <div
@@ -123,7 +123,6 @@ const Grid = ({
               className={getNodeClass(nodeType)}
               onMouseDown={() => handleMouseDown(node.row, node.col)}
               onMouseEnter={() => handleMouseEnter(node.row, node.col)}
-              onMouseUp={handleMouseUp}
               draggable={false}
             />
           );

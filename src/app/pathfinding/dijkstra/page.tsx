@@ -53,18 +53,6 @@ export default function DijkstraPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [grid, setGrid] = useState<Node[][]>([]);
 
-  const getSpeedLabel = () => {
-    switch (speed) {
-      case SPEEDS.SLOW: return "Slow";
-      case SPEEDS.NORMAL: return "Normal";
-      case SPEEDS.FAST: return "Fast";
-      case SPEEDS.INSTANT: return "Instant";
-      default: return "Custom";
-    }
-  };
-
-  useEffect(() => { resetGrid(); }, [dimensions]);
-
   const resetGrid = useCallback(() => {
     const newGrid: Node[][] = [];
     for (let row = 0; row < dimensions.rows; row++) {
@@ -91,6 +79,10 @@ export default function DijkstraPage() {
     setPath([]);
     setCurrentStep(0);
   }, [dimensions, startNode, endNode]);
+
+  useEffect(() => {
+    resetGrid();
+  }, [dimensions, resetGrid]);
 
   const clearWalls = () => { setWalls([]); resetGrid(); };
   const clearPath = () => { setVisitedNodes([]); setPath([]); setCurrentStep(0); resetGrid(); };
@@ -199,7 +191,7 @@ export default function DijkstraPage() {
     <div className="min-h-screen bg-gray-900 text-white py-8">
       <div className="p-6 max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-white">Dijkstra's Algorithm</h1>
+          <h1 className="text-3xl font-bold text-white">Dijkstra&apos;s Algorithm</h1>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div className="lg:col-span-3 space-y-6">
@@ -214,10 +206,7 @@ export default function DijkstraPage() {
                 walls={walls}
                 visitedNodes={visitedNodes}
                 path={path}
-                isVisualizing={isVisualizing}
                 isMouseDown={isMouseDown}
-                isMovingStart={isMovingStart}
-                isMovingEnd={isMovingEnd}
                 onMouseDownChange={setIsMouseDown}
               />
               <div className="mt-4 pt-4 border-t border-gray-700">
@@ -269,7 +258,7 @@ export default function DijkstraPage() {
               </div>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg">
-              <h2 className="text-xl font-semibold mb-4">How Dijkstra's Algorithm Works</h2>
+              <h2 className="text-xl font-semibold mb-4">How Dijkstra&apos;s Algorithm Works</h2>
               <div className="space-y-6">
                 {explanationSteps.map((step, index) => (
                   <div
@@ -298,7 +287,7 @@ export default function DijkstraPage() {
                   </div>
                   <div className="bg-gray-800/50 p-4 rounded-lg">
                     <h4 className="font-medium text-yellow-300 mb-2">Optimality</h4>
-                    <p className="text-sm text-gray-300">Dijkstra's always finds the shortest path in graphs with non-negative weights.</p>
+                    <p className="text-gray-400 text-sm mt-2">Dijkstra&apos;s algorithm is guaranteed to find the shortest path in graphs with non-negative weights. &quot;Priority queue&quot; is used to always expand the lowest-cost node.</p>
                   </div>
                 </div>
               </div>
@@ -345,7 +334,7 @@ export default function DijkstraPage() {
                 </div>
                 <div className="p-3 bg-gray-700/30 rounded-lg border border-gray-600">
                   <h4 className="font-medium text-yellow-300 mb-1">3. Visualize</h4>
-                  <p className="text-sm text-gray-300">Click "Visualize Dijkstra" to find the shortest path</p>
+                  <p className="text-sm text-gray-300">Click &quot;Visualize Dijkstra&quot; to find the shortest path</p>
                 </div>
                 <div className="p-3 bg-gray-700/30 rounded-lg border border-gray-600">
                   <h4 className="font-medium text-purple-300 mb-1">4. Experiment</h4>
@@ -355,7 +344,7 @@ export default function DijkstraPage() {
             </div>
             <div className="bg-gray-800 p-5 rounded-lg">
               <h3 className="font-semibold text-lg mb-3">About Dijkstra</h3>
-              <p className="text-sm text-gray-300 mb-4">Dijkstra's algorithm finds the shortest path between two points in a graph with non-negative weights.</p>
+              <p className="text-sm text-gray-300 mb-4">Dijkstra&apos;s algorithm finds the shortest path between two points in a graph with non-negative weights.</p>
               <div className="space-y-2">
                 <div className="flex items-start gap-2"><span className="text-blue-400">⚡</span><div><p className="font-medium">Optimal</p><p className="text-xs text-gray-400">Always finds the shortest path</p></div></div>
                 <div className="flex items-start gap-2"><span className="text-green-400">🧠</span><div><p className="font-medium">Systematic</p><p className="text-xs text-gray-400">Explores all possible paths efficiently</p></div></div>

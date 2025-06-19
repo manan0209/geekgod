@@ -53,18 +53,6 @@ export default function BFSPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [grid, setGrid] = useState<Node[][]>([]);
 
-  const getSpeedLabel = () => {
-    switch (speed) {
-      case SPEEDS.SLOW: return "Slow";
-      case SPEEDS.NORMAL: return "Normal";
-      case SPEEDS.FAST: return "Fast";
-      case SPEEDS.INSTANT: return "Instant";
-      default: return "Custom";
-    }
-  };
-
-  useEffect(() => { resetGrid(); }, [dimensions]);
-
   const resetGrid = useCallback(() => {
     const newGrid: Node[][] = [];
     for (let row = 0; row < dimensions.rows; row++) {
@@ -91,6 +79,10 @@ export default function BFSPage() {
     setPath([]);
     setCurrentStep(0);
   }, [dimensions, startNode, endNode]);
+
+  useEffect(() => {
+    resetGrid();
+  }, [dimensions, resetGrid]);
 
   const clearWalls = () => { setWalls([]); resetGrid(); };
   const clearPath = () => { setVisitedNodes([]); setPath([]); setCurrentStep(0); resetGrid(); };
@@ -212,10 +204,7 @@ export default function BFSPage() {
                 walls={walls}
                 visitedNodes={visitedNodes}
                 path={path}
-                isVisualizing={isVisualizing}
                 isMouseDown={isMouseDown}
-                isMovingStart={isMovingStart}
-                isMovingEnd={isMovingEnd}
                 onMouseDownChange={setIsMouseDown}
               />
               <div className="mt-4 pt-4 border-t border-gray-700">
@@ -343,7 +332,7 @@ export default function BFSPage() {
                 </div>
                 <div className="p-3 bg-gray-700/30 rounded-lg border border-gray-600">
                   <h4 className="font-medium text-yellow-300 mb-1">3. Visualize</h4>
-                  <p className="text-sm text-gray-300">Click "Visualize BFS" to find the shortest path</p>
+                  <p className="text-sm text-gray-300">Click &quot;Visualize BFS&quot; to find the shortest path</p>
                 </div>
                 <div className="p-3 bg-gray-700/30 rounded-lg border border-gray-600">
                   <h4 className="font-medium text-purple-300 mb-1">4. Experiment</h4>
@@ -362,6 +351,7 @@ export default function BFSPage() {
             </div>
           </div>
         </div>
+        <p className="text-gray-400 text-sm mt-2">Breadth-First Search always finds the shortest path in an unweighted grid. &quot;Queue&quot; is used to explore nodes in order of distance.</p>
       </div>
     </div>
   );

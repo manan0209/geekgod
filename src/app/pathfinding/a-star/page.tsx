@@ -4,7 +4,7 @@ import Grid from "@/components/Pathfinding/Grid";
 import { useCallback, useEffect, useState } from "react";
 
 // Node type for TypeScript
-type NodeType = "start" | "end" | "wall" | "visited" | "path" | "unvisited";
+// type NodeType = "start" | "end" | "wall" | "visited" | "path" | "unvisited";
 
 interface Node {
   row: number;
@@ -37,7 +37,7 @@ function heuristic(node: Node, endNode: Node): number {
 }
 
 // Get neighbors for a node
-export function getNeighbors(node: Node, grid: Node[][]): Node[] {
+function getNeighbors(node: Node, grid: Node[][]): Node[] {
   const neighbors: Node[] = [];
   const { row, col } = node;
   const numRows = grid.length;
@@ -66,79 +66,6 @@ export function getNeighbors(node: Node, grid: Node[][]): Node[] {
   }
 
   return neighbors;
-}
-
-// A* algorithm implementation
-function aStar(
-  grid: Node[][],
-  startNode: Node,
-  endNode: Node
-): { visitedNodes: Node[]; path: Node[] } {
-  const openSet: Node[] = [startNode];
-  const visitedNodes: Node[] = [];
-
-  // Initialize grid
-  for (const row of grid) {
-    for (const node of row) {
-      node.gScore = node === startNode ? 0 : Infinity;
-      node.hScore = heuristic(node, endNode);
-      node.fScore = node === startNode ? node.hScore : Infinity;
-      node.previousNode = null;
-    }
-  }
-
-  while (openSet.length > 0) {
-    // Sort open set by fScore
-    openSet.sort((a, b) => a.fScore - b.fScore);
-    const currentNode = openSet.shift()!;
-
-    // Skip if we've already visited this node
-    if (currentNode.isVisited) continue;
-
-    // Mark as visited
-    currentNode.isVisited = true;
-    visitedNodes.push(currentNode);
-
-    // Check if we've reached the end
-    if (currentNode === endNode) {
-      break;
-    }
-
-    // Get neighbors
-    const neighbors = getNeighbors(currentNode, grid);
-
-    for (const neighbor of neighbors) {
-      if (neighbor.isVisited) continue;
-
-      // Calculate tentative gScore
-      const tentativeGScore = currentNode.gScore + 1; // Assuming each step has a cost of 1
-
-      if (tentativeGScore < neighbor.gScore) {
-        // This path to neighbor is better than any previous one
-        neighbor.previousNode = currentNode;
-        neighbor.gScore = tentativeGScore;
-        neighbor.hScore = heuristic(neighbor, endNode);
-        neighbor.fScore = neighbor.gScore + neighbor.hScore;
-
-        // Add to open set if not already there
-        if (!openSet.includes(neighbor)) {
-          openSet.push(neighbor);
-        }
-      }
-    }
-  }
-
-  // Reconstruct path if end node was reached
-  const path: Node[] = [];
-  if (endNode.previousNode) {
-    let currentNode = endNode;
-    while (currentNode !== null && currentNode !== startNode) {
-      path.unshift(currentNode);
-      currentNode = currentNode.previousNode!;
-    }
-  }
-
-  return { visitedNodes, path };
 }
 
 export default function AstarPage() {
@@ -172,31 +99,8 @@ export default function AstarPage() {
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMovingStart, setIsMovingStart] = useState(false);
   const [isMovingEnd, setIsMovingEnd] = useState(false);
-  const [showPseudocode, setShowPseudocode] = useState(true);
-  const [highlightedLines, setHighlightedLines] = useState<number[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [grid, setGrid] = useState<Node[][]>([]);
-
-  // Get speed label
-  const getSpeedLabel = () => {
-    switch (speed) {
-      case SPEEDS.SLOW:
-        return "Slow";
-      case SPEEDS.NORMAL:
-        return "Normal";
-      case SPEEDS.FAST:
-        return "Fast";
-      case SPEEDS.INSTANT:
-        return "Instant";
-      default:
-        return "Custom";
-    }
-  };
-
-  // Initialize grid
-  useEffect(() => {
-    resetGrid();
-  }, [dimensions]);
 
   const resetGrid = useCallback(() => {
     const newGrid: Node[][] = [];
@@ -220,11 +124,15 @@ export default function AstarPage() {
       newGrid.push(currentRow);
     }
     setGrid(newGrid);
-    setVisitedNodes([]);
     setPath([]);
-    setHighlightedLines([]);
-    setCurrentStep(0);
+    setVisitedNodes([]);
+    setIsVisualizing(false);
   }, [dimensions, startNode, endNode]);
+
+  // Initialize grid
+  useEffect(() => {
+    resetGrid();
+  }, [dimensions, resetGrid]);
 
   const clearWalls = () => {
     setWalls([]);
@@ -234,7 +142,6 @@ export default function AstarPage() {
   const clearPath = () => {
     setVisitedNodes([]);
     setPath([]);
-    setHighlightedLines([]);
     setCurrentStep(0);
     resetGrid();
   };
@@ -245,10 +152,6 @@ export default function AstarPage() {
 
   const handleSpeedChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSpeed(Number(e.target.value));
-  };
-
-  const togglePseudocodeView = () => {
-    setShowPseudocode(!showPseudocode);
   };
 
   // Helper function to delay execution for visualization
@@ -312,7 +215,7 @@ export default function AstarPage() {
         }
 
         // Highlight current step in pseudocode
-        setHighlightedLines([14, 15, 16]); // Highlight node selection
+        setCurrentStep(2); // Highlight node selection
 
         // Find node with lowest fScore
         let current = openSet[0];
@@ -348,7 +251,7 @@ export default function AstarPage() {
             await delay();
           }
 
-          setHighlightedLines([18]); // Highlight path reconstruction
+          setCurrentStep(4); // Highlight path reconstruction
           break;
         }
 
@@ -368,7 +271,7 @@ export default function AstarPage() {
         }
 
         // Check neighbors
-        setHighlightedLines([20, 21]); // Highlight neighbor checking
+        setCurrentStep(3); // Highlight neighbor checking
         const neighbors = getNeighbors(current, gridCopy);
 
         for (const neighbor of neighbors) {
@@ -432,7 +335,6 @@ export default function AstarPage() {
     }
 
     // Toggle wall
-    const nodeKey = `${node.row},${node.col}`;
     setWalls((prev) => {
       const wallExists = prev.some(
         (wall) => wall.row === node.row && wall.col === node.col
@@ -558,10 +460,7 @@ export default function AstarPage() {
                 walls={walls}
                 visitedNodes={visitedNodes}
                 path={path}
-                isVisualizing={isVisualizing}
                 isMouseDown={isMouseDown}
-                isMovingStart={isMovingStart}
-                isMovingEnd={isMovingEnd}
                 onMouseDownChange={setIsMouseDown}
               />
 
@@ -686,10 +585,7 @@ export default function AstarPage() {
                     <h4 className="font-medium text-yellow-300 mb-2">
                       Optimality
                     </h4>
-                    <p className="text-sm text-gray-300">
-                      A* is guaranteed to find the shortest path if the
-                      heuristic never overestimates the actual cost.
-                    </p>
+                    <p className="text-gray-400 text-sm mt-2">A* is guaranteed to find the shortest path if the heuristic is admissible (never overestimates the true cost). &quot;Manhattan distance&quot; is used here.</p>
                   </div>
                 </div>
               </div>
@@ -768,7 +664,7 @@ export default function AstarPage() {
                     3. Visualize
                   </h4>
                   <p className="text-sm text-gray-300">
-                    Click "Visualize A*" to find the shortest path
+                    Click &quot;Visualize A*&quot; to find the shortest path
                   </p>
                 </div>
                 <div className="p-3 bg-gray-700/30 rounded-lg border border-gray-600">

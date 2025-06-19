@@ -50,7 +50,7 @@ export default function KruskalPage() {
   const [step, setStep] = useState(0);
   const [mstEdges, setMstEdges] = useState<Set<number>>(new Set());
   const [cycleEdges, setCycleEdges] = useState<Set<number>>(new Set());
-  const [history, setHistory] = useState<any[]>([]);
+  const [history, setHistory] = useState<{ mst: Set<number>; cycle: Set<number>; step: number }[]>([]);
   const [autoPlay, setAutoPlay] = useState(false);
 
   // Generate graph only on client
@@ -148,9 +148,9 @@ export default function KruskalPage() {
   return (
     <div className="min-h-screen bg-gray-900 text-white py-12">
       <div className="max-w-3xl mx-auto px-4">
-        <h1 className="text-3xl font-bold mb-6 text-green-400">Kruskal's Algorithm Visualization</h1>
+        <h1 className="text-3xl font-bold mb-6 text-green-400">Kruskal&apos;s Algorithm Visualization</h1>
         <p className="mb-6 text-gray-300">
-          Kruskal's algorithm is a classic greedy algorithm for finding the Minimum Spanning Tree (MST) of a connected, undirected graph. It always picks the smallest edge that doesn't form a cycle, gradually building the MST.
+          Kruskal&apos;s algorithm is a classic greedy algorithm for finding the Minimum Spanning Tree (MST) of a connected, undirected graph. It always picks the smallest edge that doesn&apos;t form a cycle, gradually building the MST.
         </p>
         <div className="flex flex-col md:flex-row gap-8 items-center mb-8">
           <KruskalGraph
@@ -168,7 +168,7 @@ export default function KruskalPage() {
           </div>
         </div>
         <div className="bg-gray-800 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-2">How Kruskal's Algorithm Works</h2>
+          <h2 className="text-xl font-semibold mb-2">How Kruskal&apos;s Algorithm Works</h2>
           <ol className="list-decimal list-inside space-y-2 text-gray-200">
             <li>Sort all edges in the graph by increasing weight.</li>
             <li>Initialize the MST as an empty set.</li>
